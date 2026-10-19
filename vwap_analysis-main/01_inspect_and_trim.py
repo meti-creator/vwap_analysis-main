@@ -5,7 +5,7 @@ manageable size before we do any real analysis.
 """
 
 
-import pandas as pd
+import pandas  as pd
 
 df = pd.read_csv("data-2020.csv")
 
