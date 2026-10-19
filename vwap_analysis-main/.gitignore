@@ -1,0 +1,29 @@
+# --- Python ---
+__pycache__/
+*.pyc
+*.pyo
+
+# --- Virtual environment ---
+.venv/
+venv/
+env/
+
+# --- Data files (large, shouldn't live in git history) ---
+*.csv
+*.parquet
+data-2020.csv
+nq_subset.csv
+nq_tagged.csv
+nq_vwap.csv
+daily_anchors.csv
+containment_results.csv
+
+# --- OS/editor junk ---
+.DS_Store
+Thumbs.db
+.vscode/
+
+# --- Output artifacts ---
+final_report.md
+*.png
+*.html
