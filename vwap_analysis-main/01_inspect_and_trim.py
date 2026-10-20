@@ -5,25 +5,21 @@ manageable size before we do any real analysis.
 """
 
 
-import pandas  as pd
+import pandas as pd  # pyright: ignore[reportMissingModuleSource]
 
 df = pd.read_csv("data-2020.csv")
 
 print("Raw file shape:", df.shape)   # (num_rows, num_columns) -- quick sanity check
 print(df.head())                     # show first 5 rows, confirm columns look right
 
-# timezone-aware datetime in UTC, from the epoch seconds in ts_event
-# 2. Convert ts_event (epoch seconds) into a real, timezone-aware datetime
 
 df["dt"] = pd.to_datetime(df["ts_event"], unit="s", utc=True)
 
 
-# 3. Sanity check: does the date range make sense?
 
 print("Earliest timestamp:", df["dt"].min())
 print("Latest timestamp:  ", df["dt"].max())
 
-# 4. Check the bar interval (is this really 1-minute data?)
 
 time_diffs = df["dt"].diff().dropna()
 print("Median time between bars:", time_diffs.median())

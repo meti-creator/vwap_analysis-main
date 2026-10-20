@@ -5,8 +5,7 @@ standard deviation band, resetting at the start of every session.
 
 """
 
-import pandas as pd
-import numpy as np
+import pandas as pd  # type: ignore[reportMissingModuleSource]
 
 
 df = pd.read_csv("nq_tagged.csv")
@@ -45,7 +44,7 @@ df["vol_dev_sq"] = df["volume"] * (df["typical_price"] - df["vwap"]) ** 2
 df["cum_vol_dev_sq"] = df.groupby(group_cols)["vol_dev_sq"].cumsum()
 
 df["vwap_variance"] = df["cum_vol_dev_sq"] / df["cum_v"]
-df["vwap_sd"] = np.sqrt(df["vwap_variance"])
+df["vwap_sd"] = df["vwap_variance"] ** 0.5
 
 
 # 5. Sanity checks
